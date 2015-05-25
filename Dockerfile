@@ -2,6 +2,8 @@
 FROM       haskell:7.8
 MAINTAINER Ondra Pelech <ondra.pelech@gmail.com>
 
+RUN apt-get update
+RUN apt-get upgrade -y
 RUN apt-get install -y bash wget coreutils tar xz-utils make libgmp-dev gzip curl zlib1g-dev
 RUN apt-get install -y freeglut3-dev libblas-dev libbz2-dev libcairo2-dev libglib2.0-dev libgsl0-dev libicu-dev liblapack-dev libmysqlclient-dev libncurses5-dev libpango1.0-dev libpcre3-dev libpq-dev libtinfo-dev libxrandr-dev libxss-dev libzmq3-dev llvm llvm-dev nettle-dev opt pkg-config
 RUN cabal info
