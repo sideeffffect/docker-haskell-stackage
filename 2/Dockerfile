@@ -26,16 +26,24 @@ RUN apt-get install -y freeglut3-dev \
                        nettle-dev \
                        opt \
                        pkg-config \
-                       libcurl4-gnutls-dev \
+                       libcurl4-openssl-dev \
                        libfreenect-dev \
                        libgd-dev \
                        libgtk2.0-dev \
                        libgtk-3-dev \
-                       liblzma-dev
+                       liblzma-dev \
+                       libnotify-dev
                        
 RUN cabal info
 RUN curl -sf -L "https://www.stackage.org/lts/2/cabal.config?global=true" >> /root/.cabal/config
 RUN cabal update
+
+RUN which ghc && \
+    ghc --version && \
+    which cabal && \
+    cabal --version && \
+    ghc-pkg list
+
 RUN cabal install array \
                   async \
                   attoparsec \
@@ -86,8 +94,15 @@ RUN cabal install array \
                   vector \
                   xhtml \
                   zlib \
-                  cpphs
+                  cpphs \
+                  gtk2hs-buildtools
                   
+RUN which ghc && \
+    ghc --version && \
+    which cabal && \
+    cabal --version && \
+    ghc-pkg list
+
 ## run ghci by default unless a command is specified
 CMD ["ghci"]
 
