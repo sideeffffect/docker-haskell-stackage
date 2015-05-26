@@ -25,7 +25,13 @@ RUN apt-get install -y freeglut3-dev \
                        llvm-dev \
                        nettle-dev \
                        opt \
-                       pkg-config
+                       pkg-config \
+                       libcurl4-gnutls-dev \
+                       libfreenect-dev \
+                       libgd-dev \
+                       libgtk2.0-dev \
+                       libgtk-3-dev \
+                       liblzma-dev
                        
 RUN cabal info
 RUN curl -sf -L "https://www.stackage.org/lts/1/cabal.config?global=true" >> /root/.cabal/config
@@ -79,7 +85,8 @@ RUN cabal install array \
                   unordered-containers \
                   vector \
                   xhtml \
-                  zlib
+                  zlib \
+                  cpphs
                   
 ## run ghci by default unless a command is specified
 CMD ["ghci"]
