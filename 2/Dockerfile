@@ -44,6 +44,8 @@ RUN which ghc && \
     cabal --version && \
     ghc-pkg list
 
+RUN cabal install alex happy
+RUN cabal install cpphs gtk2hs-buildtools
 RUN cabal install array \
                   async \
                   attoparsec \
@@ -93,9 +95,7 @@ RUN cabal install array \
                   unordered-containers \
                   vector \
                   xhtml \
-                  zlib \
-                  cpphs \
-                  gtk2hs-buildtools
+                  zlib
                   
 RUN which ghc && \
     ghc --version && \
