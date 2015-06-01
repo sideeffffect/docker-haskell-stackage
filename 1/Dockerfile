@@ -44,6 +44,7 @@ RUN which ghc && \
     cabal --version && \
     ghc-pkg list
 
+RUN cabal install cabal-install
 RUN cabal install alex happy
 RUN cabal install cpphs gtk2hs-buildtools
 RUN cabal install array \
